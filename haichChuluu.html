@@ -1,62 +1,86 @@
 `<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Хайч, Чулуу, Даавуу</title>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        color: white;
+        font-family: "Segoe UI", sans-serif;
+        text-align: center;
+        padding-top: 80px;
+      }
+
+      h1 {
+        color: #00ffe1;
+        text-shadow: 1px 1px 10px #00ffff;
+      }
+
+      .btn-container {
+        margin-top: 40px;
+      }
+
+      button {
+        background-color: #333;
+        color: aqua;
+        border: 2px solid aqua;
+        border-radius: 10px;
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      button:hover {
+        background-color: aqua;
+        color: black;
+        transform: scale(1.1);
+        box-shadow: 0 0 10px aqua;
+      }
+
+      p {
+        font-size: 1.5em;
+        margin-top: 30px;
+        color: #ffd700;
+      }
+    </style>
+  </head>
   <body>
     <div id="div">
-      <button onclick="haich()">Haich</button>
-      <button onclick="chuluu()">Chuluu</button>
-      <button onclick="daawuu()">Daawuu</button>
+      <button onclick="play('haich')">Хайч</button>
+      <button onclick="play('chuluu')">Чулуу</button>
+      <button onclick="play('daawuu')">Даавуу</button>
     </div>
+    <p id="result">Та сонголтоо хийгээрэй...</p>
   </body>
   <script>
-    const div = document.getElementById("div");
-    const paragraph = document.createElement("p");
-
-    getComputerValue = () => {
-      const comValue = Math.floor(Math.random() * 3) + 1;
-
-      return comValue;
+    getComputerChoice = () => {
+      const choices = ["haich", "chuluu", "daawuu"];
+      const randomIndex = Math.floor(Math.random() * 3);
+      return choices[randomIndex];
     };
 
-    haich = () => {
-      const comValue = getComputerValue();
+    play = (userChoice) => {
+      const computerChoice = getComputerChoice();
+      let result = "";
 
-      if (comValue === 1) {
-        paragraph.innerText = `Computer haich gargasan tul tentslee.`;
-      }
-      if (comValue === 2) {
-        paragraph.innerText = "Yalagdlaa";
-      }
-      if (comValue === 3) {
-        paragraph.innerText = "Yallaa";
+      if (userChoice === computerChoice) {
+        result = `Компьютер ${computerChoice} сонгосон. Тэнцлээ!`;
+      } else if (
+        (userChoice === "haich" && computerChoice === "daawuu") ||
+        (userChoice === "chuluu" && computerChoice === "haich") ||
+        (userChoice === "daawuu" && computerChoice === "chuluu")
+      ) {
+        result = `Компьютер ${computerChoice} сонгосон. Та яллаа!`;
+      } else {
+        result = `Компьютер ${computerChoice} сонгосон. Та ялагдлаа.`;
       }
 
-      div.appendChild(paragraph);
+      document.getElementById("result").innerText = result;
     };
-    daawuu = () => {
-      const comValue = getComputerValue();
 
-      if (comValue === 1) {
-        paragraph.innerText = `Computer daavuu gargasan tul tentslee.`;
-      }
-      if (comValue === 2) {
-        paragraph.innerText = "Yalagdlaa";
-      }
-      if (comValue === 3) {
-        paragraph.innerText = "Yallaa";
-      }
-    };
-    chuluu = () => {
-      const comValue = getComputerValue();
-
-      if (comValue === 1) {
-        paragraph.innerText = `Computer chuluu gargasan tul tentslee.`;
-      }
-      if (comValue === 2) {
-        paragraph.innerText = "Yalagdlaa";
-      }
-      if (comValue === 3) {
-        paragraph.innerText = "Yallaa";
-      }
-    };
+    play();
   </script>
 </html>
