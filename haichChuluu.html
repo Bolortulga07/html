@@ -1,0 +1,62 @@
+`<!DOCTYPE html>
+<html>
+  <body>
+    <div id="div">
+      <button onclick="haich()">Haich</button>
+      <button onclick="chuluu()">Chuluu</button>
+      <button onclick="daawuu()">Daawuu</button>
+    </div>
+  </body>
+  <script>
+    const div = document.getElementById("div");
+    const paragraph = document.createElement("p");
+
+    getComputerValue = () => {
+      const comValue = Math.floor(Math.random() * 3) + 1;
+
+      return comValue;
+    };
+
+    haich = () => {
+      const comValue = getComputerValue();
+
+      if (comValue === 1) {
+        paragraph.innerText = `Computer haich gargasan tul tentslee.`;
+      }
+      if (comValue === 2) {
+        paragraph.innerText = "Yalagdlaa";
+      }
+      if (comValue === 3) {
+        paragraph.innerText = "Yallaa";
+      }
+
+      div.appendChild(paragraph);
+    };
+    daawuu = () => {
+      const comValue = getComputerValue();
+
+      if (comValue === 1) {
+        paragraph.innerText = `Computer daavuu gargasan tul tentslee.`;
+      }
+      if (comValue === 2) {
+        paragraph.innerText = "Yalagdlaa";
+      }
+      if (comValue === 3) {
+        paragraph.innerText = "Yallaa";
+      }
+    };
+    chuluu = () => {
+      const comValue = getComputerValue();
+
+      if (comValue === 1) {
+        paragraph.innerText = `Computer chuluu gargasan tul tentslee.`;
+      }
+      if (comValue === 2) {
+        paragraph.innerText = "Yalagdlaa";
+      }
+      if (comValue === 3) {
+        paragraph.innerText = "Yallaa";
+      }
+    };
+  </script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <header>
+      <h1>Welcome to my blog</h1>
+      <span> Sharing toughts and ideas with the world </span>
+    </header>
+    <main>
+      <div id="articles"></div>
+    </main>
+    <footer><address>2025 All rights reserverd.</address></footer>
+    <script>
+      const articles = [
+        {
+          title: "Title",
+          author: "Jane doe",
+          content:
+            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem",
+        },
+        {
+          title: "Title",
+          author: "Jane doe",
+          content:
+            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem",
+        },
+        {
+          title: "Title",
+          author: "Jane doe",
+          content:
+            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem",
+        },
+      ];
+
+      const div = document.getElementById("articles");
+
+      for (const article of articles) {
+        const articleElement = document.createElement("article");
+        const headerElement = document.createElement("h1");
+        const paragraphElement = document.createElement("p");
+
+        headerElement.innerText = article.title;
+        paragraphElement.innerText = article.content;
+
+        console.log(headerElement);
+
+        articleElement.appendChild(headerElement);
+        articleElement.appendChild(paragraphElement);
+
+        console.log(articleElement);
+
+        div.appendChild(articleElement);
+      }
+    </script>
+  </body>
+</html>
