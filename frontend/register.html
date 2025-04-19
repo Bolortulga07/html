@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      input {
+        width: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Register form</h1>
+    </header>
+
+    <form id="login-form">
+      <input
+        type="username"
+        name="username"
+        placeholder="enter your username"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="enter your email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="enter your password"
+        required
+      />
+      <button type="submit">Register</button>
+    </form>
+    <button onclick="loging()">Go login</button>
+    <script>
+      loging = () => {
+        window.location.replace("/login");
+      };
+
+      const form = document.getElementById("login-form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const username = e.target["username"].value;
+        const email = e.target["email"].value;
+        const password = e.target["password"].value;
+
+        const response = await fetch("http://localhost:3000/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Aut: localStorage.getItem("auth-token"),
+          },
+          body: JSON.stringify({ username, email, password }),
+        }).then((res) => res.json());
+
+        console.log(response);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      input {
+        width: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Login form</h1>
+    </header>
+
+    <form id="login-form">
+      <input
+        type="email"
+        name="email"
+        placeholder="enter your email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="enter your password"
+        required
+      />
+      <button type="submit">Sign in</button>
+    </form>
+
+    <button onclick="register()" id="register-button">Register</button>
+
+    <script>
+      const register = () => {
+        window.location.replace("/register");
+      };
+
+      const form = document.getElementById("login-form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        try {
+          const response = await fetch(`http://localhost:3000/auth/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          }).catch(() => {
+            window.alert("Email password buruu bn!");
+          });
+
+          const token = await response.text();
+
+          if (token) {
+            localStorage.setItem("auth-token", token);
+
+            window.location.replace("/");
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      });
+    </script>
+  </body>
+</html>
