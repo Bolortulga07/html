@@ -1,4 +1,4 @@
-import { Users } from "../user/userModel.js";
+import { Users } from "../models/userModel.js";
 
 export const register = async (req, res) => {
   try {
@@ -14,7 +14,6 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  console.log(req.body);
   try {
     const { email, password } = req.body;
     const token = await Users.login({ email, password });

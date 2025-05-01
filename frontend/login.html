@@ -2,34 +2,105 @@
 <html>
   <head>
     <style>
+      body {
+        background-color: #080808;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-box {
+        background-color: #111;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      h1 {
+        color: #f8f8f8;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
       input {
-        width: 200px;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        background-color: #1e1e1e;
+        color: white;
+        outline: none;
+      }
+
+      input::placeholder {
+        color: #aaa;
+      }
+
+      button {
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      button[type="submit"] {
+        background-color: #28a745;
+        margin-bottom: 10px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #218838;
+      }
+
+      #register-button {
+        background-color: #007bff;
+      }
+
+      #register-button:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
 
   <body>
-    <header>
-      <h1>Login form</h1>
-    </header>
+    <div>
+      <header>
+        <h1>Login</h1>
+      </header>
 
-    <form id="login-form">
-      <input
-        type="email"
-        name="email"
-        placeholder="enter your email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="enter your password"
-        required
-      />
-      <button type="submit">Sign in</button>
-    </form>
+      <form id="login-form">
+        <input
+          type="email"
+          name="email"
+          placeholder="enter your email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="enter your password"
+          required
+        />
+        <button type="submit">Sign in</button>
+      </form>
 
-    <button onclick="register()" id="register-button">Register</button>
+      <button onclick="register()" id="register-button">Register</button>
+    </div>
 
     <script>
       const register = () => {
@@ -59,7 +130,7 @@
           if (token) {
             localStorage.setItem("auth-token", token);
 
-            window.location.replace("/");
+            window.location.replace("/index");
           }
         } catch (e) {
           console.log(e);
