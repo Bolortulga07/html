@@ -30,6 +30,16 @@ export const getMovies = async (req, res) => {
   }
 };
 
+export const movieDetail = async (req, res) => {
+  const { id } = req.params;
+  console.log(1, id);
+  const movie = await Movies.findById(id);
+
+  console.log(2, movie);
+
+  res.send(movie);
+};
+
 export const deleteMovie = async (req, res) => {
   const { id } = req.params;
   await Movies.findByIdAndDelete(id);

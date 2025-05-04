@@ -3,6 +3,7 @@ import {
   deleteMovie,
   getMovieAndUpdate,
   getMovies,
+  movieDetail,
   postMovies,
   updateMovie,
 } from "./movieController.js";
@@ -14,3 +15,4 @@ movieRouthes.get("/getMovies", getMovies);
 movieRouthes.delete("/deleteMovie/:id", deleteMovie);
 movieRouthes.put("/updatemovie/:id", updateMovie);
 movieRouthes.get("/getMovieAndUpdate/:id", getMovieAndUpdate);
+movieRouthes.get("/movieDetail/:id", movieDetail);
