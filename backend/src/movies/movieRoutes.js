@@ -13,6 +13,6 @@ export const movieRouthes = express.Router();
 movieRouthes.post("/postMovies", postMovies);
 movieRouthes.get("/getMovies", getMovies);
 movieRouthes.delete("/deleteMovie/:id", deleteMovie);
-movieRouthes.put("/updatemovie/:id", updateMovie);
+movieRouthes.put("/updateMovie/:id", updateMovie);
 movieRouthes.get("/getMovieAndUpdate/:id", getMovieAndUpdate);
 movieRouthes.get("/movieDetail/:id", movieDetail);

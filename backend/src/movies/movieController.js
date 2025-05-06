@@ -31,16 +31,35 @@ export const getMovies = async (req, res) => {
 };
 
 export const movieDetail = async (req, res) => {
-  const { id } = req.params;
-  const movie = await Movies.findById(id);
+  try {
+    const { id } = req.params;
+    const movie = await Movies.findById(id);
 
-  res.send(movie);
+    if (!movie) {
+      res.send({
+        message: "not found",
+      });
+    }
+
+    res.send(movie);
+  } catch (error) {
+    res.send(error.message);
+  }
 };
 
 export const deleteMovie = async (req, res) => {
-  const { id } = req.params;
-  await Movies.findByIdAndDelete(id);
-  res.send("Movie deleted.");
+  try {
+    const { id } = req.params;
+
+    const deletedMovie = await Movies.findByIdAndDelete(id);
+
+    res.send({
+      data: deletedMovie,
+      status: !!deletedMovie,
+    });
+  } catch (error) {
+    res.send(error.message);
+  }
 };
 
 export const getMovieAndUpdate = async (req, res) => {
